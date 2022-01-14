@@ -1,0 +1,25 @@
+{
+  "CN": "kube-etcd-peer",
+  "hosts": [
+    "etcd-1.k8s.home.arpa",
+    "etcd-2.k8s.home.arpa",
+    "etcd-3.k8s.home.arpa",
+    "192.168.114.11",
+    "192.168.114.12",
+    "192.168.114.13",
+    "localhost",
+    "127.0.0.1"
+  ],
+  "key": {
+    "algo": "rsa",
+    "size": 2048
+  },
+  "names": [
+    {
+      "O":  "etcd",
+      "L":  "Machida-shi",
+      "ST": "Tokyo",
+      "C":  "JP"
+    }
+  ]
+}

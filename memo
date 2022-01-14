@@ -1,0 +1,47 @@
+
+
+
+seq 1 3 | xargs -I {} -P 3 ssh control-plane-{}.k8s.home.arpa "sudo systemctl restart etcd kube-apiserver kube-controller-manager kube-scheduler"
+
+
+curl -s --cacert certs/cert/kubernetes-ca.pem --cert certs/cert/kube-apiserver-kubelet-client.pem --key certs/cert/kube-apiserver-kubelet-client-key.pem https://node-1.k8s.home.arpa:10250/metrics/resource
+
+
+
+
+
+sudo systemctl stop etcd.service kube-apiserver.service kube-controller-manager.service kube-scheduler.service
+sudo systemctl disable etcd.service kube-apiserver.service kube-controller-manager.service kube-scheduler.service
+sudo rm -rf \
+    /etc/etcd/ \
+    /var/lib/etcd/ \
+    /var/log/etcd/ \
+    /etc/kubernetes/ \
+    /var/lib/kubernetes/ \
+    /etc/systemd/system/etcd.service \
+    /etc/systemd/system/kube-apiserver.service \
+    /etc/systemd/system/kube-controller-manager.service \
+    /etc/systemd/system/kube-scheduler.service 
+
+
+
+sudo systemctl stop kubelet.service kube-proxy.service 
+sudo systemctl disable kubelet.service kube-proxy.service 
+sudo rm -rf \
+    /etc/cni/ \
+    /etc/containerd/ \
+    /etc/etcd/ \
+    /etc/kubelet/ \
+    /etc/kube-proxy/ \
+    /opt/cni/ \
+    /var/lib/kubelet/ \
+    /var/lib/kube-proxy/ \
+    /var/lib/kubernetes/ \
+    /etc/systemd/system/kubelet.service \
+    /etc/systemd/system/kube-proxy.service
+
+
+
+for i in `seq 1 3`; do ssh control-plane-${i}.k8s.home.arpa "sudo reboot"; done 
+for i in `seq 1 5`; do ssh node-${i}.k8s.home.arpa "sudo reboot"; done 
+

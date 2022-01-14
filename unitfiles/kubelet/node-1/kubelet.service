@@ -1,0 +1,22 @@
+[Unit]
+Description=Kubernetes Kubelet
+Documentation=https://github.com/kubernetes/kubernetes
+After=containerd.service
+Requires=containerd.service
+
+[Service]
+ExecStart=/usr/local/bin/kubelet \
+  --config=/etc/kubelet/config/kubelet-config.yaml \
+  --container-runtime=remote \
+  --container-runtime-endpoint=unix:///var/run/containerd/containerd.sock \
+  --image-pull-progress-deadline=3m \
+  --kubeconfig=/var/lib/kubelet/kubeconfig \
+  --register-node=true \
+  --root-dir=/var/lib/kubelet \
+  --hostname-override=node-1.k8s.home.arpa \
+  --v=3
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

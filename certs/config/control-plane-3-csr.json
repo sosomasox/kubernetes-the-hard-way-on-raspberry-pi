@@ -1,0 +1,19 @@
+{
+  "CN": "system:node:control-plane-3.k8s.home.arpa",
+  "hosts": [
+    "control-plane-3.k8s.home.arpa",
+    "192.168.114.13"
+  ],
+  "key": {
+    "algo": "rsa",
+    "size": 2048
+  },
+  "names": [
+    {
+      "O":  "system:nodes",
+      "L":  "Machida-shi",
+      "ST": "Tokyo",
+      "C":  "JP"
+    }
+  ]
+}

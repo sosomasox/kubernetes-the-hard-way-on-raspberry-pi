@@ -1,0 +1,15 @@
+{
+  "CN": "etcd-ca",
+  "key": {
+    "algo": "rsa",
+    "size": 2048
+  },
+  "names": [
+    {
+      "O":  "etcd",
+      "L":  "Machida-shi",
+      "ST": "Tokyo",
+      "C":  "JP"
+    }
+  ]
+}

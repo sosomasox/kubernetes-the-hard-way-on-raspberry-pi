@@ -1,0 +1,20 @@
+apiVersion: kubelet.config.k8s.io/v1beta1
+kind: KubeletConfiguration
+authentication:
+  anonymous:
+    enabled: false
+  webhook:
+    enabled: true
+  x509:
+    clientCAFile: "/var/lib/kubernetes/kubernetes-ca.pem"
+authorization:
+  mode: Webhook
+cgroupDriver: systemd
+clusterDomain: "cluster.local"
+clusterDNS:
+  - "10.96.0.10"
+hairpinMode: hairpin-veth
+resolvConf: "/run/systemd/resolve/resolv.conf"
+runtimeRequestTimeout: "15m"
+tlsCertFile: "/var/lib/kubelet/control-plane-3.pem"
+tlsPrivateKeyFile: "/var/lib/kubelet/control-plane-3-key.pem"

@@ -1,0 +1,19 @@
+{
+  "CN": "system:node:node-4.k8s.home.arpa",
+  "hosts": [
+    "node-4.k8s.home.arpa",
+    "192.168.114.17"
+  ],
+  "key": {
+    "algo": "rsa",
+    "size": 2048
+  },
+  "names": [
+    {
+      "O":  "system:nodes",
+      "L":  "Machida-shi",
+      "ST": "Tokyo",
+      "C":  "JP"
+    }
+  ]
+}
