@@ -7,38 +7,44 @@ if [ $? != 0 ]; then
 fi
 
 echo "---> Generate kube-controller-manager kubeconfig"
+for i in `seq 1 3`
+do
 kubectl config set-cluster kubernetes-the-hard-way \
   --certificate-authority=./certs/cert/kubernetes-ca.pem \
   --embed-certs=true \
   --server=https://192.168.114.10:64430 \
-  --kubeconfig=kubeconfig/kube-controller-manager.kubeconfig
+  --kubeconfig=kubeconfig/kube-controller-manager-control-plane-${i}.kubeconfig
 kubectl config set-credentials default-controller-manager \
-  --client-certificate=./certs/cert/kube-controller-manager.pem \
-  --client-key=./certs/cert/kube-controller-manager-key.pem \
+  --client-certificate=./certs/cert/kube-controller-manager-control-plane-${i}.pem \
+  --client-key=./certs/cert/kube-controller-manager-control-plane-${i}-key.pem \
   --embed-certs=true \
-  --kubeconfig=kubeconfig/kube-controller-manager.kubeconfig
+  --kubeconfig=kubeconfig/kube-controller-manager-control-plane-${i}.kubeconfig
 kubectl config set-context kubernetes-the-hard-way \
   --cluster=kubernetes-the-hard-way \
   --user=default-controller-manager \
-  --kubeconfig=kubeconfig/kube-controller-manager.kubeconfig
-kubectl config use-context kubernetes-the-hard-way --kubeconfig=kubeconfig/kube-controller-manager.kubeconfig
+  --kubeconfig=kubeconfig/kube-controller-manager-control-plane-${i}.kubeconfig
+kubectl config use-context kubernetes-the-hard-way --kubeconfig=kubeconfig/kube-controller-manager-control-plane-${i}.kubeconfig
+done
 
 echo "---> Generate kube-scheduler kubeconfig"
+for i in `seq 1 3`
+do
 kubectl config set-cluster kubernetes-the-hard-way \
   --certificate-authority=./certs/cert/kubernetes-ca.pem \
   --embed-certs=true \
   --server=https://192.168.114.10:64430 \
-  --kubeconfig=kubeconfig/kube-scheduler.kubeconfig
+  --kubeconfig=kubeconfig/kube-scheduler-control-plane-${i}.kubeconfig
 kubectl config set-credentials default-scheduler \
-  --client-certificate=./certs/cert/kube-scheduler.pem \
-  --client-key=./certs/cert/kube-scheduler-key.pem \
+  --client-certificate=./certs/cert/kube-scheduler-control-plane-${i}.pem \
+  --client-key=./certs/cert/kube-scheduler-control-plane-${i}-key.pem \
   --embed-certs=true \
-  --kubeconfig=kubeconfig/kube-scheduler.kubeconfig
+  --kubeconfig=kubeconfig/kube-scheduler-control-plane-${i}.kubeconfig
 kubectl config set-context kubernetes-the-hard-way \
   --cluster=kubernetes-the-hard-way \
   --user=default-scheduler \
-  --kubeconfig=kubeconfig/kube-scheduler.kubeconfig
-kubectl config use-context kubernetes-the-hard-way --kubeconfig=kubeconfig/kube-scheduler.kubeconfig
+  --kubeconfig=kubeconfig/kube-scheduler-control-plane-${i}.kubeconfig
+kubectl config use-context kubernetes-the-hard-way --kubeconfig=kubeconfig/kube-scheduler-control-plane-${i}.kubeconfig
+done
 
 echo "---> Generate admin user kubeconfig"
 kubectl config set-cluster kubernetes-the-hard-way \
