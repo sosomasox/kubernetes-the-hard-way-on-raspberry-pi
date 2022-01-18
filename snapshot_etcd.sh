@@ -8,7 +8,7 @@ do
 done
 
 if [ -n "$LEADER" ]; then
-  etcdctl --endpoints $LEADER --cacert certs/cert/etcd-ca.pem --cert certs/cert/etcd-healthcheck-client.pem --key certs/cert/etcd-healthcheck-client-key.pem snapshot save snapshot_`date +%Y%m%d`.db
+  etcdctl --endpoints $LEADER --cacert certs/cert/etcd-ca.pem --cert certs/cert/etcd-healthcheck-client.pem --key certs/cert/etcd-healthcheck-client-key.pem snapshot save ./snapshots/snapshot_`date +%Y%m%d`.db
 fi
 
 exit 0
