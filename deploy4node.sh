@@ -1,9 +1,9 @@
 #!/bin/bash -x
 
+seq 1 3 | xargs -I {} -P 3 scp install4node.sh control-plane-{}.k8s.home.arpa:
+seq 1 3 | xargs -I {} -P 3 ssh control-plane-{}.k8s.home.arpa "./install4node.sh" > /dev/null 2>&1
 for i in `seq 1 3`
 do
-    scp install4node.sh control-plane-${i}.k8s.home.arpa:
-    seq 1 3 | xargs -I {} -P 3 ssh control-plane-{}.k8s.home.arpa "./install4node.sh" > /dev/null 2>&1
     ssh control-plane-${i}.k8s.home.arpa "mv control-plane-${i}.kubeconfig kubeconfig"
     ssh control-plane-${i}.k8s.home.arpa "sudo mv kubeconfig control-plane-*.pem /var/lib/kubelet/"
     ssh control-plane-${i}.k8s.home.arpa "sudo mv kube-proxy.kubeconfig /var/lib/kube-proxy/"
@@ -15,10 +15,10 @@ do
     ssh control-plane-${i}.k8s.home.arpa "sudo systemctl daemon-reload"
     ssh control-plane-${i}.k8s.home.arpa "sudo systemctl enable containerd kubelet kube-proxy"
 done
+seq 1 5 | xargs -I {} -P 3 scp install4node.sh node-{}.k8s.home.arpa:
+seq 1 5 | xargs -I {} -P 3 ssh node-{}.k8s.home.arpa "./install4node.sh" > /dev/null 2>&1
 for i in `seq 1 5`
 do
-    scp install4node.sh node-${i}.k8s.home.arpa:
-    seq 1 5 | xargs -I {} -P 3 ssh node-{}.k8s.home.arpa "./install4node.sh" > /dev/null 2>&1
     ssh node-${i}.k8s.home.arpa "mv node-${i}.kubeconfig kubeconfig"
     ssh node-${i}.k8s.home.arpa "sudo mv kubeconfig node-*.pem /var/lib/kubelet/"
     ssh node-${i}.k8s.home.arpa "sudo mv kube-proxy.kubeconfig /var/lib/kube-proxy/"
