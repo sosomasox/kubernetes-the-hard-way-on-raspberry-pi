@@ -29,8 +29,8 @@ do
         configs/kube-scheduler/kube-scheduler-control-plane-${i}.yaml \
         unitfiles/etcd/control-plane-${i}/etcd.service \
         unitfiles/kube-apiserver/control-plane-${i}/kube-apiserver.service \
-        unitfiles/kube-controller-manager/-control-plane-${i}/kube-controller-manager.service \
-        unitfiles/kube-scheduler/-control-plane-${i}/kube-scheduler.service \
+        unitfiles/kube-controller-manager/control-plane-${i}/kube-controller-manager.service \
+        unitfiles/kube-scheduler/control-plane-${i}/kube-scheduler.service \
         control-plane-${i}.k8s.home.arpa:
 done
 
