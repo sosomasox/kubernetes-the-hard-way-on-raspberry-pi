@@ -18,25 +18,25 @@ cfssl gencert \
     -initca ./config/kubernetes-front-proxy-ca-csr.json | cfssljson -bare ./cert/kubernetes-front-proxy-ca
 
 echo "---> Generate certificate etcd"
-for i in `seq 1 3`; 
+for i in `seq 1 3`
 do 
-    cfssl gencert \
-        -ca=./cert/etcd-ca.pem \
-        -ca-key=./cert/etcd-ca-key.pem \
-        -config=./config/etcd-ca-config.json \
-        -profile=etcd \
-        ./config/etcd-csr.json | cfssljson -bare ./cert/etcd-${i};
+cfssl gencert \
+    -ca=./cert/etcd-ca.pem \
+    -ca-key=./cert/etcd-ca-key.pem \
+    -config=./config/etcd-ca-config.json \
+    -profile=etcd \
+    ./config/etcd-csr.json | cfssljson -bare ./cert/etcd-${i}
 done
 
 echo "---> Generate certificate etcd-peer"
-for i in `seq 1 3`;
+for i in `seq 1 3`
 do
-    cfssl gencert \
-        -ca=./cert/etcd-ca.pem \
-        -ca-key=./cert/etcd-ca-key.pem \
-        -config=./config/etcd-ca-config.json \
-        -profile=etcd \
-        ./config/etcd-peer-csr.json | cfssljson -bare ./cert/etcd-peer-${i};
+cfssl gencert \
+    -ca=./cert/etcd-ca.pem \
+    -ca-key=./cert/etcd-ca-key.pem \
+    -config=./config/etcd-ca-config.json \
+    -profile=etcd \
+    ./config/etcd-peer-csr.json | cfssljson -bare ./cert/etcd-peer-${i}
 done
 
 echo "---> Generate certificate etcd-healthcheck-client"
@@ -64,14 +64,14 @@ cfssl gencert \
     ./config/admin-csr.json | cfssljson -bare ./cert/admin
 
 echo "---> Generate certificate for kube-apiserver"
-for i in `seq 1 3`; 
-do \
+for i in `seq 1 3`
+do
 cfssl gencert \
     -ca=./cert/kubernetes-ca.pem \
     -ca-key=./cert/kubernetes-ca-key.pem \
     -config=./config/kubernetes-ca-config.json \
     -profile=kubernetes \
-    ./config/kube-apiserver-csr.json | cfssljson -bare ./cert/kube-apiserver-control-plane-${i}; \
+    ./config/kube-apiserver-csr.json | cfssljson -bare ./cert/kube-apiserver-control-plane-${i}
 done
 
 echo "---> Generate certificate for kube-apiserver-kubelet-client"
@@ -123,23 +123,23 @@ cfssl gencert \
     ./config/service-account-csr.json | cfssljson -bare ./cert/service-account
 
 echo "---> Generate certificate for kubelet"
-for i in `seq 1 3`; \
-do \
+for i in `seq 1 3`
+do
 cfssl gencert \
     -ca=./cert/kubernetes-ca.pem \
     -ca-key=./cert/kubernetes-ca-key.pem \
     -config=./config/kubernetes-ca-config.json \
     -profile=kubernetes \
-    ./config/control-plane-${i}-csr.json | cfssljson -bare ./cert/control-plane-${i}; \
+    ./config/control-plane-${i}-csr.json | cfssljson -bare ./cert/control-plane-${i}
 done
-for i in `seq 1 5`; \
-do \
+for i in `seq 1 5`
+do
 cfssl gencert \
     -ca=./cert/kubernetes-ca.pem \
     -ca-key=./cert/kubernetes-ca-key.pem \
     -config=./config/kubernetes-ca-config.json \
     -profile=kubernetes \
-    ./config/node-${i}-csr.json | cfssljson -bare ./cert/node-${i}; \
+    ./config/node-${i}-csr.json | cfssljson -bare ./cert/node-${i}
 done
 
 echo "---> Complete to generate certificate"
