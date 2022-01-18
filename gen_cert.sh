@@ -83,20 +83,26 @@ cfssl gencert \
     ./config/kube-apiserver-kubelet-client-csr.json | cfssljson -bare ./cert/kube-apiserver-kubelet-client
 
 echo "---> Generate certificate for kube-controller-manager"
+for i in `seq 1 3`
+do
 cfssl gencert \
     -ca=./cert/kubernetes-ca.pem \
     -ca-key=./cert/kubernetes-ca-key.pem \
     -config=./config/kubernetes-ca-config.json \
     -profile=kubernetes \
-    ./config/kube-controller-manager-csr.json | cfssljson -bare ./cert/kube-controller-manager
+    ./config/kube-controller-manager-csr.json | cfssljson -bare ./cert/kube-controller-manager-control-plane-${i}
+done
 
 echo "---> Generate certificate for kube-scheduler"
+for i in `seq 1 3`
+do
 cfssl gencert \
     -ca=./cert/kubernetes-ca.pem \
     -ca-key=./cert/kubernetes-ca-key.pem \
     -config=./config/kubernetes-ca-config.json \
     -profile=kubernetes \
-    ./config/kube-scheduler-csr.json | cfssljson -bare ./cert/kube-scheduler
+    ./config/kube-scheduler-csr.json | cfssljson -bare ./cert/kube-scheduler-control-plane-${i}
+done
 
 echo "---> Generate certificate for kube-proxy"
 cfssl gencert \
