@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 
 KUBERNETES_VERSION=v1.23.1
 
@@ -56,16 +56,16 @@ sudo sh -c "curl -L https://download.opensuse.org/repositories/devel:/kubic:/lib
 sudo apt update && sudo apt install -y cri-o cri-o-runc
 sudo rm -f /etc/cni/net.d/*
 
-wget -q --show-progress --https-only --timestamping \
+wget -q --https-only --timestamping \
   https://github.com/containernetworking/plugins/releases/download/v1.0.1/cni-plugins-linux-arm64-v1.0.1.tgz
 sudo tar -xvf cni-plugins-linux-arm64-v1.0.1.tgz -C /opt/cni/bin/
 
-wget -q --show-progress --https-only --timestamping \
+wget -q --https-only --timestamping \
     https://storage.googleapis.com/kubernetes-release/release/${KUBERNETES_VERSION}/bin/linux/arm64/kubelet
 chmod +x kubelet
 sudo mv kubelet /usr/local/bin/
 
-wget -q --show-progress --https-only --timestamping \
+wget -q --https-only --timestamping \
    https://storage.googleapis.com/kubernetes-release/release/${KUBERNETES_VERSION}/bin/linux/arm64/kube-proxy
 chmod +x kube-proxy
 sudo mv kube-proxy /usr/local/bin/
