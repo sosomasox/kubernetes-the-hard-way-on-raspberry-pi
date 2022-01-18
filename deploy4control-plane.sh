@@ -7,7 +7,7 @@ do
     ssh control-plane-${i}.k8s.home.arpa "sudo mv etcd-*.pem /etc/etcd/"
     ssh control-plane-${i}.k8s.home.arpa "sudo mv *.pem *.kubeconfig /var/lib/kubernetes/"
     ssh control-plane-${i}.k8s.home.arpa "sudo mv encryption-config.yaml /etc/kubernetes/config/"
-    ssh control-plane-${i}.k8s.home.arpa "sudo mv kube-scheduler.yaml /etc/kubernetes/config/"
+    ssh control-plane-${i}.k8s.home.arpa "sudo mv kube-scheduler-control-plane-${i}.yaml /etc/kubernetes/config/"
     ssh control-plane-${i}.k8s.home.arpa "sudo mv *.service /etc/systemd/system/"
     ssh control-plane-${i}.k8s.home.arpa "sudo systemctl daemon-reload"
     ssh control-plane-${i}.k8s.home.arpa "sudo systemctl enable etcd kube-apiserver kube-controller-manager kube-scheduler"
