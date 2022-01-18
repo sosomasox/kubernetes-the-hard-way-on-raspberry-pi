@@ -6,7 +6,7 @@ if [ $? != 0 ]; then
   exit
 fi
 
-echo "---> Generate kube-scheduler kubeconfig"
+echo "---> Generate kube-controller-manager kubeconfig"
 kubectl config set-cluster kubernetes-the-hard-way \
   --certificate-authority=./certs/cert/kubernetes-ca.pem \
   --embed-certs=true \
