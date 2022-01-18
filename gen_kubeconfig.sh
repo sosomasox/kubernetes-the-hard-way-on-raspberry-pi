@@ -83,39 +83,39 @@ kubectl config use-context default --kubeconfig=kubeconfig/kube-proxy.kubeconfig
 echo "---> Generate kubelet kubeconfig"
 for i in `seq 1 3`
 do
-    kubectl config set-cluster kubernetes-the-hard-way \
-        --certificate-authority=./certs/cert/kubernetes-ca.pem \
-        --embed-certs=true \
-        --server=https://192.168.114.10:64430 \
-        --kubeconfig=kubeconfig/control-plane-${i}.kubeconfig
-    kubectl config set-credentials system:node:control-plane-${i}.k8s.home.arpa \
-        --client-certificate=./certs/cert/control-plane-${i}.pem \
-        --client-key=./certs/cert/control-plane-${i}-key.pem \
-        --embed-certs=true \
-        --kubeconfig=kubeconfig/control-plane-${i}.kubeconfig 
-    kubectl config set-context default \
-        --cluster=kubernetes-the-hard-way \
-        --user=system:node:control-plane-${i}.k8s.home.arpa \
-        --kubeconfig=kubeconfig/control-plane-${i}.kubeconfig
-    kubectl config use-context default --kubeconfig=kubeconfig/control-plane-${i}.kubeconfig
+kubectl config set-cluster kubernetes-the-hard-way \
+    --certificate-authority=./certs/cert/kubernetes-ca.pem \
+    --embed-certs=true \
+    --server=https://192.168.114.10:64430 \
+    --kubeconfig=kubeconfig/control-plane-${i}.kubeconfig
+kubectl config set-credentials system:node:control-plane-${i}.k8s.home.arpa \
+    --client-certificate=./certs/cert/control-plane-${i}.pem \
+    --client-key=./certs/cert/control-plane-${i}-key.pem \
+    --embed-certs=true \
+    --kubeconfig=kubeconfig/control-plane-${i}.kubeconfig 
+kubectl config set-context default \
+    --cluster=kubernetes-the-hard-way \
+    --user=system:node:control-plane-${i}.k8s.home.arpa \
+    --kubeconfig=kubeconfig/control-plane-${i}.kubeconfig
+kubectl config use-context default --kubeconfig=kubeconfig/control-plane-${i}.kubeconfig
 done
 for i in `seq 1 5`
 do
-    kubectl config set-cluster kubernetes-the-hard-way \
-        --certificate-authority=./certs/cert/kubernetes-ca.pem \
-        --embed-certs=true \
-        --server=https://192.168.114.10:64430 \
-        --kubeconfig=kubeconfig/node-${i}.kubeconfig
-    kubectl config set-credentials system:node:node-${i}.k8s.home.arpa \
-        --client-certificate=./certs/cert/node-${i}.pem \
-        --client-key=./certs/cert/node-${i}-key.pem \
-        --embed-certs=true \
-        --kubeconfig=kubeconfig/node-${i}.kubeconfig
-    kubectl config set-context default \
-        --cluster=kubernetes-the-hard-way \
-        --user=system:node:node-${i}.k8s.home.arpa \
-        --kubeconfig=kubeconfig/node-${i}.kubeconfig
-    kubectl config use-context default --kubeconfig=kubeconfig/node-${i}.kubeconfig
+kubectl config set-cluster kubernetes-the-hard-way \
+    --certificate-authority=./certs/cert/kubernetes-ca.pem \
+    --embed-certs=true \
+    --server=https://192.168.114.10:64430 \
+    --kubeconfig=kubeconfig/node-${i}.kubeconfig
+kubectl config set-credentials system:node:node-${i}.k8s.home.arpa \
+    --client-certificate=./certs/cert/node-${i}.pem \
+    --client-key=./certs/cert/node-${i}-key.pem \
+    --embed-certs=true \
+    --kubeconfig=kubeconfig/node-${i}.kubeconfig
+kubectl config set-context default \
+    --cluster=kubernetes-the-hard-way \
+    --user=system:node:node-${i}.k8s.home.arpa \
+    --kubeconfig=kubeconfig/node-${i}.kubeconfig
+kubectl config use-context default --kubeconfig=kubeconfig/node-${i}.kubeconfig
 done
 
 echo "---> Complete to generate kubeconfig"
