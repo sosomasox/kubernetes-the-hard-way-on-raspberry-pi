@@ -1,14 +1,9 @@
 #!/bin/bash -x
 
-for i in `seq 1 3`
-do
-    scp uninstall4node.sh control-plane-${i}.k8s.home.arpa:
-    ssh control-plane-${i}.k8s.home.arpa "./uninstall4node.sh"
-done
-for i in `seq 1 5`
-do
-    scp uninstall4node.sh node-${i}.k8s.home.arpa:
-    ssh node-${i}.k8s.home.arpa "./uninstall4node.sh"
-done
+seq 1 3 | xargs -I {} -P 3 scp uninstall4node.sh control-plane-{}.k8s.home.arpa:
+seq 1 3 | xargs -I {} -P 3 ssh control-plane-{}.k8s.home.arpa "./uninstall4node.sh"
+
+seq 1 5 | xargs -I {} -P 5 scp uninstall4node.sh node-{}.k8s.home.arpa:
+seq 1 5 | xargs -I {} -P 5 ssh node-{}.k8s.home.arpa "./uninstall4node.sh"
 
 exit 0
