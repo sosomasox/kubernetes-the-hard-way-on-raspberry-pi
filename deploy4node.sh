@@ -37,4 +37,5 @@ for i in `seq 1 5`
 do
     ssh node-${i}.k8s.home.arpa "sudo systemctl start containerd kubelet kube-proxy"
 done
+
 exit 0
