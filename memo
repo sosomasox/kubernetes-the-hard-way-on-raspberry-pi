@@ -30,7 +30,6 @@ sudo systemctl disable kubelet.service kube-proxy.service
 sudo rm -rf \
     /etc/cni/ \
     /etc/containerd/ \
-    /etc/etcd/ \
     /etc/kubelet/ \
     /etc/kube-proxy/ \
     /opt/cni/ \
