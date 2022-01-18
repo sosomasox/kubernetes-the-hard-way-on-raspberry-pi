@@ -5,7 +5,6 @@ KUBERNETES_VERSION=v1.23.1
 sudo mkdir -p \
     /etc/cni/net.d/ \
     /etc/containerd/ \
-    /etc/etcd/ \
     /etc/kubelet/config/ \
     /etc/kube-proxy/config/ \
     /opt/cni/bin/ \
