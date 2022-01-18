@@ -1,7 +1,9 @@
 #!/bin/bash -x
 
+./scp4control-plane.sh
+
 seq 1 3 | xargs -I {} -P 3 scp install4control-plane.sh control-plane-{}.k8s.home.arpa:
-seq 1 3 | xargs -I {} -P 3 ssh control-plane-{}.k8s.home.arpa "./install4control-plane.sh" > /dev/null 2>&1
+seq 1 3 | xargs -I {} -P 3 ssh control-plane-{}.k8s.home.arpa "./install4control-plane.sh"
 for i in `seq 1 3`
 do 
     ssh control-plane-${i}.k8s.home.arpa "sudo cp etcd-ca.pem /var/lib/kubernetes/etcd-ca.pem"

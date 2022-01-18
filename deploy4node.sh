@@ -1,7 +1,9 @@
 #!/bin/bash -x
 
+./scp4node.sh
+
 seq 1 3 | xargs -I {} -P 3 scp install4node.sh control-plane-{}.k8s.home.arpa:
-seq 1 3 | xargs -I {} -P 3 ssh control-plane-{}.k8s.home.arpa "./install4node.sh" > /dev/null 2>&1
+seq 1 3 | xargs -I {} -P 3 ssh control-plane-{}.k8s.home.arpa "./install4node.sh"
 for i in `seq 1 3`
 do
     ssh control-plane-${i}.k8s.home.arpa "mv control-plane-${i}.kubeconfig kubeconfig"
@@ -16,7 +18,7 @@ do
     ssh control-plane-${i}.k8s.home.arpa "sudo systemctl enable containerd kubelet kube-proxy"
 done
 seq 1 5 | xargs -I {} -P 3 scp install4node.sh node-{}.k8s.home.arpa:
-seq 1 5 | xargs -I {} -P 3 ssh node-{}.k8s.home.arpa "./install4node.sh" > /dev/null 2>&1
+seq 1 5 | xargs -I {} -P 3 ssh node-{}.k8s.home.arpa "./install4node.sh"
 for i in `seq 1 5`
 do
     ssh node-${i}.k8s.home.arpa "mv node-${i}.kubeconfig kubeconfig"
