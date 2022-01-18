@@ -15,7 +15,6 @@ do
         configs/kubelet/control-plane-${i}/kubelet-config.yaml \
         unitfiles/kube-proxy/kube-proxy.service \
         unitfiles/kubelet/control-plane-${i}/kubelet.service \
-        install4node.sh \
         control-plane-${i}.k8s.home.arpa:
 done
 
@@ -34,7 +33,6 @@ do
         configs/kubelet/node-${i}/kubelet-config.yaml \
         unitfiles/kube-proxy/kube-proxy.service \
         unitfiles/kubelet/node-${i}/kubelet.service \
-        install4node.sh \
         node-${i}.k8s.home.arpa:
 done
 

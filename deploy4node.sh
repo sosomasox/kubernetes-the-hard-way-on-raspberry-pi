@@ -2,6 +2,7 @@
 
 for i in `seq 1 3`
 do
+    scp install4node.sh control-plane-${i}.k8s.home.arpa:
     ssh control-plane-${i}.k8s.home.arpa "./install4node.sh"
     ssh control-plane-${i}.k8s.home.arpa "mv control-plane-${i}.kubeconfig kubeconfig"
     ssh control-plane-${i}.k8s.home.arpa "sudo mv kubeconfig control-plane-*.pem /var/lib/kubelet/"
@@ -16,6 +17,7 @@ do
 done
 for i in `seq 1 5`
 do
+    scp install4node.sh node-${i}.k8s.home.arpa:
     ssh node-${i}.k8s.home.arpa "./install4node.sh"
     ssh node-${i}.k8s.home.arpa "mv node-${i}.kubeconfig kubeconfig"
     ssh node-${i}.k8s.home.arpa "sudo mv kubeconfig node-*.pem /var/lib/kubelet/"

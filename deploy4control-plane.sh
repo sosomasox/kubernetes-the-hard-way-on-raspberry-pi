@@ -2,6 +2,7 @@
 
 for i in `seq 1 3`
 do 
+    scp install4control-plane.sh control-plane-${i}.k8s.home.arpa:
     ssh control-plane-${i}.k8s.home.arpa "./install4control-plane.sh"
     ssh control-plane-${i}.k8s.home.arpa "sudo cp etcd-ca.pem /var/lib/kubernetes/etcd-ca.pem"
     ssh control-plane-${i}.k8s.home.arpa "sudo mv etcd-*.pem /etc/etcd/"

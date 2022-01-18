@@ -31,7 +31,6 @@ do
         unitfiles/kube-apiserver/control-plane-${i}/kube-apiserver.service \
         unitfiles/kube-controller-manager/-control-plane-${i}/kube-controller-manager.service \
         unitfiles/kube-scheduler/-control-plane-${i}/kube-scheduler.service \
-        install4control-plane.sh \
         control-plane-${i}.k8s.home.arpa:
 done
 
