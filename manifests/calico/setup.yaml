@@ -3835,11 +3835,8 @@ rules:
       - clusterinformations
     verbs:
       - get
-      - list
       - create
       - update
-      - delete
-      - watch
   # KubeControllersConfiguration is where it gets its config
   - apiGroups: ["crd.projectcalico.org"]
     resources:
