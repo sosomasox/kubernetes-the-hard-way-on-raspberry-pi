@@ -1,8 +1,5 @@
 {
   "signing": {
-    "default": {
-      "expiry": "672h"
-    },
     "profiles": {
       "kubernetes": {
         "usages": [
@@ -22,9 +19,18 @@
           "server auth", 
           "client auth"
         ],
-        "expiry": "1h"
+        "expiry": "642m"
+      },
+      "kube-proxy": {
+        "usages": [
+          "signing",
+          "digital signature",
+          "key encipherment",
+          "server auth",
+          "client auth"
+        ],
+        "expiry": "642m"
       }
-
     }
   }
 }

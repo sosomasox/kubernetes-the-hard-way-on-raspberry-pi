@@ -109,7 +109,7 @@ cfssl gencert \
   -ca=./cert/kubernetes-ca.pem \
   -ca-key=./cert/kubernetes-ca-key.pem \
   -config=./config/kubernetes-ca-config.json \
-  -profile=kubernetes \
+  -profile=kube-proxy \
   ./config/kube-proxy-csr.json | cfssljson -bare ./cert/kube-proxy
 
 echo "---> Generate certificate for front-proxy-client"

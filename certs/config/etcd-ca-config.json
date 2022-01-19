@@ -1,8 +1,5 @@
 {
   "signing": {
-    "default": {
-      "expiry": "672h"
-    },
     "profiles": {
       "etcd": {
         "usages": [
