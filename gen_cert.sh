@@ -106,14 +106,6 @@ cfssl gencert \
     ./config/kube-scheduler-csr.json | cfssljson -bare ./cert/kube-scheduler-control-plane-${i}
 done
 
-echo "---> Generate certificate for kube-proxy"
-cfssl gencert \
-  -ca=./cert/kubernetes-ca.pem \
-  -ca-key=./cert/kubernetes-ca-key.pem \
-  -config=./config/kubernetes-ca-config.json \
-  -profile=kube-proxy \
-  ./config/kube-proxy-csr.json | cfssljson -bare ./cert/kube-proxy
-
 echo "---> Generate certificate for front-proxy-client"
 cfssl gencert \
     -ca=./cert/kubernetes-front-proxy-ca.pem \
@@ -149,6 +141,14 @@ cfssl gencert \
     -profile=kubelet \
     ./config/node-${i}-csr.json | cfssljson -bare ./cert/node-${i}
 done
+
+echo "---> Generate certificate for kube-proxy"
+cfssl gencert \
+  -ca=./cert/kubernetes-ca.pem \
+  -ca-key=./cert/kubernetes-ca-key.pem \
+  -config=./config/kubernetes-ca-config.json \
+  -profile=kube-proxy \
+  ./config/kube-proxy-csr.json | cfssljson -bare ./cert/kube-proxy
 
 popd
 

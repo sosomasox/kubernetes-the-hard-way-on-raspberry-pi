@@ -63,23 +63,6 @@ kubectl config set-context kubernetes-the-hard-way \
   --kubeconfig=kubeconfig/admin.kubeconfig
 kubectl config use-context kubernetes-the-hard-way --kubeconfig=kubeconfig/admin.kubeconfig
 
-echo "---> Generate kube-proxy kubeconfig"
-kubectl config set-cluster kubernetes-the-hard-way \
-  --certificate-authority=./certs/cert/kubernetes-ca.pem \
-  --embed-certs=true \
-  --server=https://192.168.114.10:64430 \
-  --kubeconfig=kubeconfig/kube-proxy.kubeconfig
-kubectl config set-credentials system:kube-proxy \
-  --client-certificate=./certs/cert/kube-proxy.pem \
-  --client-key=./certs/cert/kube-proxy-key.pem \
-  --embed-certs=true \
-  --kubeconfig=kubeconfig/kube-proxy.kubeconfig
-kubectl config set-context default \
-  --cluster=kubernetes-the-hard-way \
-  --user=system:kube-proxy \
-  --kubeconfig=kubeconfig/kube-proxy.kubeconfig
-kubectl config use-context default --kubeconfig=kubeconfig/kube-proxy.kubeconfig
-
 echo "---> Generate kubelet kubeconfig"
 for i in `seq 1 3`
 do
@@ -117,6 +100,23 @@ kubectl config set-context default \
     --kubeconfig=kubeconfig/node-${i}.kubeconfig
 kubectl config use-context default --kubeconfig=kubeconfig/node-${i}.kubeconfig
 done
+
+echo "---> Generate kube-proxy kubeconfig"
+kubectl config set-cluster kubernetes-the-hard-way \
+  --certificate-authority=./certs/cert/kubernetes-ca.pem \
+  --embed-certs=true \
+  --server=https://192.168.114.10:64430 \
+  --kubeconfig=kubeconfig/kube-proxy.kubeconfig
+kubectl config set-credentials system:kube-proxy \
+  --client-certificate=./certs/cert/kube-proxy.pem \
+  --client-key=./certs/cert/kube-proxy-key.pem \
+  --embed-certs=true \
+  --kubeconfig=kubeconfig/kube-proxy.kubeconfig
+kubectl config set-context default \
+  --cluster=kubernetes-the-hard-way \
+  --user=system:kube-proxy \
+  --kubeconfig=kubeconfig/kube-proxy.kubeconfig
+kubectl config use-context default --kubeconfig=kubeconfig/kube-proxy.kubeconfig
 
 echo "---> Complete to generate kubeconfig"
 
