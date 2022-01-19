@@ -19,7 +19,7 @@
           "server auth", 
           "client auth"
         ],
-        "expiry": "642m"
+        "expiry": "672m"
       },
       "kube-proxy": {
         "usages": [
@@ -29,7 +29,7 @@
           "server auth",
           "client auth"
         ],
-        "expiry": "642m"
+        "expiry": "672m"
       }
     }
   }
