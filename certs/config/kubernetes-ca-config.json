@@ -13,7 +13,18 @@
           "client auth"
         ],
         "expiry": "672h"
+      },
+      "kubelet": {
+        "usages": [
+          "signing", 
+          "digital signature", 
+          "key encipherment", 
+          "server auth", 
+          "client auth"
+        ],
+        "expiry": "1h"
       }
+
     }
   }
 }

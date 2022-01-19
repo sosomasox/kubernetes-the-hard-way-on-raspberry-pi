@@ -135,7 +135,7 @@ cfssl gencert \
     -ca=./cert/kubernetes-ca.pem \
     -ca-key=./cert/kubernetes-ca-key.pem \
     -config=./config/kubernetes-ca-config.json \
-    -profile=kubernetes \
+    -profile=kubelet \
     ./config/control-plane-${i}-csr.json | cfssljson -bare ./cert/control-plane-${i}
 done
 for i in `seq 1 5`
@@ -144,7 +144,7 @@ cfssl gencert \
     -ca=./cert/kubernetes-ca.pem \
     -ca-key=./cert/kubernetes-ca-key.pem \
     -config=./config/kubernetes-ca-config.json \
-    -profile=kubernetes \
+    -profile=kubelet \
     ./config/node-${i}-csr.json | cfssljson -bare ./cert/node-${i}
 done
 
