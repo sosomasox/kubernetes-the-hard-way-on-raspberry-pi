@@ -50,8 +50,13 @@ done
 }
 
 
-./scp4node.sh
-DEPLOY_CONTROL-PLANE
-DEPLOY_NODE
+if [ "$1" = "control-plane" ]; then
+    ./scp4node.sh $1
+    DEPLOY_CONTROL-PLANE
+    DEPLOY_NODE
+else
+    ./scp4node.sh
+    DEPLOY_NODE
+fi
 
 exit 0
