@@ -15,6 +15,7 @@ ExecStart=/usr/local/bin/kube-apiserver \
   --audit-log-compress \
   --authorization-mode=RBAC,Node \
   --client-ca-file=/var/lib/kubernetes/kubernetes-ca.pem \
+  --enable-bootstrap-token-auth=true \
   --enable-admission-plugins=NamespaceLifecycle,LimitRanger,ServiceAccount,TaintNodesByCondition,PodSecurity,Priority,DefaultTolerationSeconds,DefaultStorageClass,StorageObjectInUseProtection,PersistentVolumeClaimResize,RuntimeClass,CertificateApproval,CertificateSigning,CertificateSubjectRestriction,DefaultIngressClass,MutatingAdmissionWebhook,ValidatingAdmissionWebhook,ResourceQuota \
   --etcd-cafile=/var/lib/kubernetes/etcd-ca.pem \
   --etcd-certfile=/var/lib/kubernetes/kube-apiserver-etcd-client.pem \
