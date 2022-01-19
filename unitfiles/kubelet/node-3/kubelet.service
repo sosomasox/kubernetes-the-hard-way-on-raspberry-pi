@@ -13,6 +13,7 @@ ExecStart=/usr/local/bin/kubelet \
   --kubeconfig=/var/lib/kubelet/kubeconfig \
   --register-node=true \
   --root-dir=/var/lib/kubelet \
+  --cert-dir=/var/lib/kubelet \
   --hostname-override=node-3.k8s.home.arpa \
   --v=3
 Restart=on-failure
