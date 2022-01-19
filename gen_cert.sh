@@ -1,6 +1,8 @@
 #!/bin/bash
 
-mkdir certs/cert && cd certs
+pushd certs
+
+mkdir cert
 if [ $? != 0 ]; then
   exit
 fi
@@ -147,6 +149,8 @@ cfssl gencert \
     -profile=kubelet \
     ./config/node-${i}-csr.json | cfssljson -bare ./cert/node-${i}
 done
+
+popd
 
 echo "---> Complete to generate certificate"
 
