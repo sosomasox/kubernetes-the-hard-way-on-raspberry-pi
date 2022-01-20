@@ -46,8 +46,8 @@ done
 
 if [ "$1" = "control-plane" ]; then
     SCP_CONTROL-PLANE
+else
+    SCP_NODE
 fi
-
-SCP_NODE
 
 exit 0
