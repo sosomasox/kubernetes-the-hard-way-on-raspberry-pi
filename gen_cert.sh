@@ -119,7 +119,7 @@ cfssl gencert \
     -ca=./cert/kubernetes-ca.pem \
     -ca-key=./cert/kubernetes-ca-key.pem \
     -config=./config/kubernetes-ca-config.json \
-    -profile=kubernetes \
+    -profile=service-account \
     ./config/service-account-csr.json | cfssljson -bare ./cert/service-account
 
 echo "---> Generate certificate for kubelet"

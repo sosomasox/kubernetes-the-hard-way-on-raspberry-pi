@@ -11,6 +11,16 @@
         ],
         "expiry": "672h"
       },
+      "service-account": {
+        "usages": [
+          "signing",
+          "digital signature",
+          "key encipherment",
+          "server auth",
+          "client auth"
+        ],
+        "expiry": "672m"
+      },
       "kubelet": {
         "usages": [
           "signing", 
