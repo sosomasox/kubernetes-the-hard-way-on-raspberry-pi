@@ -3784,6 +3784,11 @@ apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: calico-kube-controllers
 rules:
+  - apiGroups: [""]
+    resources:
+      - namespaces
+    verbs:
+      - get
   # Nodes are watched to monitor for deletions.
   - apiGroups: [""]
     resources:
