@@ -22,6 +22,8 @@ for i in `seq 1 3`
 do
 ssh control-plane-${i}.k8s.home.arpa "sudo systemctl start containerd kubelet kube-proxy"
 done
+
+seq 1 3 | xargs -I {} -P 3 ssh control-plane-{}.k8s.home.arpa "rm ./install4node.sh"
 }
 
 
@@ -47,6 +49,8 @@ for i in `seq 1 5`
 do
 ssh node-${i}.k8s.home.arpa "sudo systemctl start containerd kubelet kube-proxy"
 done
+
+seq 1 5 | xargs -I {} -P 5 ssh node-{}.k8s.home.arpa "rm ./install4node.sh"
 }
 
 
