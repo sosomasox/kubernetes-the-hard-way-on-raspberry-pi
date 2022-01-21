@@ -6,7 +6,7 @@ GITHUB_URL=https://github.com/etcd-io/etcd/releases/download
 DOWNLOAD_URL=${GITHUB_URL}
 
 sudo mkdir -p \
-    /etc/etcd/ \
+    /etc/etcd/pki/ \
     /var/lib/etcd/ \
     /var/log/etcd/
 
