@@ -4,7 +4,7 @@ KUBERNETES_VERSION=v1.23.1
 
 sudo mkdir -p \
     /etc/kubernetes/config/ \
-    /var/lib/kubernetes/
+    /etc/kubernetes/pki/
 
 wget -q --https-only --timestamping https://dl.k8s.io/${KUBERNETES_VERSION}/bin/linux/arm64/kube-apiserver
 sudo chmod +x kube-apiserver
