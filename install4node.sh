@@ -6,11 +6,11 @@ sudo mkdir -p \
     /etc/cni/net.d/ \
     /etc/containerd/ \
     /etc/kubelet/config/ \
+    /etc/kubelet/pki/ \
     /etc/kube-proxy/config/ \
+    /etc/kube-proxy/pki/ \
     /opt/cni/bin/ \
-    /var/lib/kubelet/ \
-    /var/lib/kube-proxy/ \
-    /var/lib/kubernetes/
+    /var/lib/kubelet/
 
 sudo sh -c "cat > /etc/modules-load.d/containerd.conf <<EOF
 overlay

@@ -6,7 +6,7 @@ authentication:
   webhook:
     enabled: true
   x509:
-    clientCAFile: "/var/lib/kubernetes/kubernetes-ca.pem"
+    clientCAFile: "/etc/kubelet/pki/kubernetes-ca.pem"
 authorization:
   mode: Webhook
 cgroupDriver: systemd
@@ -16,5 +16,5 @@ clusterDNS:
 hairpinMode: hairpin-veth
 resolvConf: "/run/systemd/resolve/resolv.conf"
 runtimeRequestTimeout: "15m"
-tlsCertFile: "/var/lib/kubelet/node-4.pem"
-tlsPrivateKeyFile: "/var/lib/kubelet/node-4-key.pem"
+tlsCertFile: "/etc/kubelet/pki/node-4.pem"
+tlsPrivateKeyFile: "/etc/kubelet/pki/node-4-key.pem"

@@ -13,11 +13,9 @@ sudo rm -rf \
     /etc/containerd/ \
     /etc/kubelet/ \
     /etc/kube-proxy/ \
-    /opt/cni/ \
-    /var/lib/kubelet/ \
-    /var/lib/kube-proxy/ \
-    /var/lib/kubernetes/ \
     /etc/systemd/system/kubelet.service \
-    /etc/systemd/system/kube-proxy.service
+    /etc/systemd/system/kube-proxy.service \
+    /opt/cni/ \
+    /var/lib/kubelet/
 
 exit 0
