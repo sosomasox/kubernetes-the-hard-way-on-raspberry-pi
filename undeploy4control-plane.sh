@@ -6,4 +6,3 @@ seq 1 3 | xargs -I {} -P 3 ssh control-plane-{}.k8s.home.arpa "rm ./uninstall4co
 seq 1 3 | xargs -I {} -P 3 ssh control-plane-{}.k8s.home.arpa "sync"
 
 exit 0
-
