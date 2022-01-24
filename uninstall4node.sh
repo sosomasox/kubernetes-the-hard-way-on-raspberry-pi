@@ -1,10 +1,12 @@
 #!/bin/bash -x
 
 sudo systemctl stop \
+    containerd.service \
     kubelet.service \
     kube-proxy.service
 
 sudo systemctl disable \
+    containerd.service \
     kubelet.service \
     kube-proxy.service
 
