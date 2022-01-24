@@ -1,9 +1,0 @@
-
-
-
-etcdctl endpoint status --write-out=table --endpoints=etcd-1.k8s.home.arpa:2379,etcd-2.k8s.home.arpa:2379,etcd-3.k8s.home.arpa:2379 --cacert certs/cert/etcd-ca.pem --cert certs/cert/etcd-healthcheck-client.pem --key certs/cert/etcd-healthcheck-client-key.pem
-
-
-
-curl -s --cacert certs/cert/kubernetes-ca.pem --cert certs/cert/kube-apiserver-kubelet-client.pem --key certs/cert/kube-apiserver-kubelet-client-key.pem https://node-1.k8s.home.arpa:10250/metrics/resource
-
