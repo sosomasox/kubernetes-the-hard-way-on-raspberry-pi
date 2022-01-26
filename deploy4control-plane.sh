@@ -4,6 +4,7 @@
 
 seq 1 3 | xargs -I {} -P 3 scp install4control-plane.sh control-plane-{}.k8s.home.arpa:
 seq 1 3 | xargs -I {} -P 3 ssh control-plane-{}.k8s.home.arpa "./install4control-plane.sh"
+seq 1 3 | xargs -I {} -P 3 ssh control-plane-{}.k8s.home.arpa "rm ./install4control-plane.sh"
 
 for i in `seq 1 3`
 do 
@@ -16,7 +17,5 @@ do
 done
 
 seq 1 3 | xargs -I {} -P 3 ssh control-plane-{}.k8s.home.arpa "sudo systemctl start kube-apiserver kube-controller-manager kube-scheduler"
-
-seq 1 3 | xargs -I {} -P 3 ssh control-plane-{}.k8s.home.arpa "rm ./install4control-plane.sh"
 
 exit 0

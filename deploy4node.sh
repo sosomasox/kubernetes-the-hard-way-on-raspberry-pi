@@ -4,6 +4,8 @@ DEPLOY_CONTROL-PLANE ()
 {
 seq 1 3 | xargs -I {} -P 3 scp install4node.sh control-plane-{}.k8s.home.arpa:
 seq 1 3 | xargs -I {} -P 3 ssh control-plane-{}.k8s.home.arpa "./install4node.sh"
+seq 1 3 | xargs -I {} -P 3 ssh control-plane-{}.k8s.home.arpa "rm ./install4node.sh"
+
 for i in `seq 1 3`
 do
 ssh control-plane-${i}.k8s.home.arpa "sudo mv control-plane-${i}.kubeconfig control-plane-*.pem kubernetes-ca.pem /etc/kubelet/pki/"
@@ -20,8 +22,6 @@ for i in `seq 1 3`
 do
 ssh control-plane-${i}.k8s.home.arpa "sudo systemctl start containerd kubelet kube-proxy"
 done
-
-seq 1 3 | xargs -I {} -P 3 ssh control-plane-{}.k8s.home.arpa "rm ./install4node.sh"
 }
 
 
@@ -29,6 +29,8 @@ DEPLOY_NODE ()
 {
 seq 1 5 | xargs -I {} -P 5 scp install4node.sh node-{}.k8s.home.arpa:
 seq 1 5 | xargs -I {} -P 5 ssh node-{}.k8s.home.arpa "./install4node.sh"
+seq 1 5 | xargs -I {} -P 5 ssh node-{}.k8s.home.arpa "rm ./install4node.sh"
+
 for i in `seq 1 5`
 do
 ssh node-${i}.k8s.home.arpa "sudo mv node-${i}.kubeconfig node-*.pem kubernetes-ca.pem /etc/kubelet/pki/"
@@ -45,8 +47,6 @@ for i in `seq 1 5`
 do
 ssh node-${i}.k8s.home.arpa "sudo systemctl start containerd kubelet kube-proxy"
 done
-
-seq 1 5 | xargs -I {} -P 5 ssh node-{}.k8s.home.arpa "rm ./install4node.sh"
 }
 
 
