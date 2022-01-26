@@ -1,5 +1,7 @@
 #!/bin/bash -x 
 
+mkdir -p snapshots
+
 for ret in `etcdctl --endpoints etcd-1.k8s.home.arpa:2379,etcd-2.k8s.home.arpa:2379,etcd-3.k8s.home.arpa:2379 --cacert certs/cert/etcd-ca.pem --cert certs/cert/etcd-healthcheck-client.pem --key certs/cert/etcd-healthcheck-client-key.pem endpoint status | tr -d ' '`
 do
   if [ "`echo $ret | awk -F ',' '{print $5}'`" = "true" ]; then
