@@ -4,6 +4,7 @@
 
 seq 1 3 | xargs -I {} -P 3 scp install4loadbalancer.sh loadbalancer-{}.k8s.home.arpa:
 seq 1 3 | xargs -I {} -P 3 ssh loadbalancer-{}.k8s.home.arpa "./install4loadbalancer.sh"
+seq 1 3 | xargs -I {} -P 3 ssh loadbalancer-{}.k8s.home.arpa "rm ./install4loadbalancer.sh"
 
 for i in `seq 1 3`
 do 
