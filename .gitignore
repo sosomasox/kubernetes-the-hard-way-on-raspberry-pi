@@ -1,3 +1,4 @@
 /certs/cert*
-/kubeconfig
-/snapshots
+/certs/cacert/
+/kubeconfig/
+/snapshots/
