@@ -3,9 +3,10 @@
 for i in `seq 1 3`
 do
 scp \
-    certs/cert/etcd-ca.pem \
-    certs/cert/kubernetes-ca.pem \
-    certs/cert/kubernetes-ca-key.pem \
+    certs/cacert/etcd-ca.pem \
+    certs/cacert/kubernetes-ca.pem \
+    certs/cacert/kubernetes-ca-key.pem \
+    certs/cacert/kubernetes-front-proxy-ca.pem \
     certs/cert/kube-apiserver-control-plane-${i}.pem \
     certs/cert/kube-apiserver-control-plane-${i}-key.pem \
     certs/cert/kube-apiserver-etcd-client.pem \
@@ -16,7 +17,6 @@ scp \
     certs/cert/kube-scheduler-control-plane-${i}-key.pem \
     certs/cert/service-account.pem \
     certs/cert/service-account-key.pem \
-    certs/cert/kubernetes-front-proxy-ca.pem \
     certs/cert/front-proxy-client.pem \
     certs/cert/front-proxy-client-key.pem \
     kubeconfig/kube-controller-manager-control-plane-${i}.kubeconfig \

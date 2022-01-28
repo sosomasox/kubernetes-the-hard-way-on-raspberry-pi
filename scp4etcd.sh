@@ -3,7 +3,7 @@
 for i in `seq 1 3`
 do
 scp \
-    certs/cert/etcd-ca.pem \
+    certs/cacert/etcd-ca.pem \
     certs/cert/etcd-${i}.pem \
     certs/cert/etcd-${i}-key.pem \
     certs/cert/etcd-peer-${i}.pem \

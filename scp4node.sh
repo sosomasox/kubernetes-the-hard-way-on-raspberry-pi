@@ -5,7 +5,7 @@ SCP_CONTROL-PLANE ()
 for i in `seq 1 3`
 do
 scp \
-    certs/cert/kubernetes-ca.pem \
+    certs/cacert/kubernetes-ca.pem \
     certs/cert/control-plane-${i}.pem \
     certs/cert/control-plane-${i}-key.pem \
     kubeconfig/control-plane-${i}.kubeconfig \
@@ -26,7 +26,7 @@ SCP_NODE ()
 for i in `seq 1 5`
 do
 scp \
-    certs/cert/kubernetes-ca.pem \
+    certs/cacert/kubernetes-ca.pem \
     certs/cert/node-${i}.pem \
     certs/cert/node-${i}-key.pem \
     kubeconfig/node-${i}.kubeconfig \

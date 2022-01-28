@@ -1,16 +1,18 @@
-#!/bin/bash
+#!/bin/bash -x
 
-ls certs/cert >/dev/null 2>&1
+ls certs/cert/ >/dev/null 2>&1
 if [ $? != 0 ]; then
   echo "Please run in the same directory as cert" 
   exit
 fi
 
+mkdir kubeconfig
+
 echo "---> Generate kube-controller-manager kubeconfig"
 for i in `seq 1 3`
 do
 kubectl config set-cluster kubernetes-the-hard-way \
-  --certificate-authority=./certs/cert/kubernetes-ca.pem \
+  --certificate-authority=./certs/cacert/kubernetes-ca.pem \
   --embed-certs=true \
   --server=https://192.168.114.10:64430 \
   --kubeconfig=kubeconfig/kube-controller-manager-control-plane-${i}.kubeconfig
@@ -30,7 +32,7 @@ echo "---> Generate kube-scheduler kubeconfig"
 for i in `seq 1 3`
 do
 kubectl config set-cluster kubernetes-the-hard-way \
-  --certificate-authority=./certs/cert/kubernetes-ca.pem \
+  --certificate-authority=./certs/cacert/kubernetes-ca.pem \
   --embed-certs=true \
   --server=https://192.168.114.10:64430 \
   --kubeconfig=kubeconfig/kube-scheduler-control-plane-${i}.kubeconfig
@@ -48,7 +50,7 @@ done
 
 echo "---> Generate admin user kubeconfig"
 kubectl config set-cluster kubernetes-the-hard-way \
-  --certificate-authority=./certs/cert/kubernetes-ca.pem \
+  --certificate-authority=./certs/cacert/kubernetes-ca.pem \
   --embed-certs=true \
   --server=https://192.168.114.10:64430 \
   --kubeconfig=kubeconfig/admin.kubeconfig
@@ -67,7 +69,7 @@ echo "---> Generate kubelet kubeconfig"
 for i in `seq 1 3`
 do
 kubectl config set-cluster kubernetes-the-hard-way \
-    --certificate-authority=./certs/cert/kubernetes-ca.pem \
+    --certificate-authority=./certs/cacert/kubernetes-ca.pem \
     --embed-certs=true \
     --server=https://192.168.114.10:64430 \
     --kubeconfig=kubeconfig/control-plane-${i}.kubeconfig
@@ -85,7 +87,7 @@ done
 for i in `seq 1 5`
 do
 kubectl config set-cluster kubernetes-the-hard-way \
-    --certificate-authority=./certs/cert/kubernetes-ca.pem \
+    --certificate-authority=./certs/cacert/kubernetes-ca.pem \
     --embed-certs=true \
     --server=https://192.168.114.10:64430 \
     --kubeconfig=kubeconfig/node-${i}.kubeconfig
@@ -103,7 +105,7 @@ done
 
 echo "---> Generate kube-proxy kubeconfig"
 kubectl config set-cluster kubernetes-the-hard-way \
-  --certificate-authority=./certs/cert/kubernetes-ca.pem \
+  --certificate-authority=./certs/cacert/kubernetes-ca.pem \
   --embed-certs=true \
   --server=https://192.168.114.10:64430 \
   --kubeconfig=kubeconfig/kube-proxy.kubeconfig
