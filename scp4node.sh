@@ -23,7 +23,7 @@ done
 
 SCP_NODE ()
 {
-for i in `seq 1 5`
+for i in `seq 1 4`
 do
 scp \
     certs/cacert/kubernetes-ca.pem \

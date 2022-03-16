@@ -27,11 +27,11 @@ done
 
 DEPLOY_NODE ()
 {
-seq 1 5 | xargs -I {} -P 5 scp install4node.sh node-{}.k8s.home.arpa:
-seq 1 5 | xargs -I {} -P 5 ssh node-{}.k8s.home.arpa "./install4node.sh"
-seq 1 5 | xargs -I {} -P 5 ssh node-{}.k8s.home.arpa "rm ./install4node.sh"
+seq 1 4 | xargs -I {} -P 4 scp install4node.sh node-{}.k8s.home.arpa:
+seq 1 4 | xargs -I {} -P 4 ssh node-{}.k8s.home.arpa "./install4node.sh"
+seq 1 4 | xargs -I {} -P 4 ssh node-{}.k8s.home.arpa "rm ./install4node.sh"
 
-for i in `seq 1 5`
+for i in `seq 1 4`
 do
 ssh node-${i}.k8s.home.arpa "sudo mv node-${i}.kubeconfig node-*.pem kubernetes-ca.pem /etc/kubelet/pki/"
 ssh node-${i}.k8s.home.arpa "sudo mv kube-proxy.kubeconfig /etc/kube-proxy/pki/"
@@ -43,7 +43,7 @@ ssh node-${i}.k8s.home.arpa "sudo systemctl daemon-reload"
 ssh node-${i}.k8s.home.arpa "sudo systemctl enable containerd kubelet kube-proxy"
 done
 
-for i in `seq 1 5`
+for i in `seq 1 4`
 do
 ssh node-${i}.k8s.home.arpa "sudo systemctl start containerd kubelet kube-proxy"
 done
