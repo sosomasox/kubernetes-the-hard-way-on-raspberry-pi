@@ -5,7 +5,7 @@ Documentation=https://github.com/kubernetes/kubernetes
 [Service]
 ExecStart=/usr/local/bin/kube-apiserver \
   --bind-address=0.0.0.0 \
-  --advertise-address=192.168.114.11 \
+  --advertise-address=192.168.114.1 \
   --allow-privileged=true \
   --apiserver-count=3 \
   --audit-log-maxage=31 \
@@ -20,7 +20,7 @@ ExecStart=/usr/local/bin/kube-apiserver \
   --etcd-cafile=/etc/kubernetes/pki/etcd-ca.pem \
   --etcd-certfile=/etc/kubernetes/pki/kube-apiserver-etcd-client.pem \
   --etcd-keyfile=/etc/kubernetes/pki/kube-apiserver-etcd-client-key.pem \
-  --etcd-servers=https://192.168.114.11:2379,https://192.168.114.12:2379,https://192.168.114.13:2379 \
+  --etcd-servers=https://192.168.114.1:2379,https://192.168.114.2:2379,https://192.168.114.3:2379 \
   --event-ttl=1h \
   --encryption-provider-config=/etc/kubernetes/config/encryption-config.yaml \
   --kubelet-certificate-authority=/etc/kubernetes/pki/kubernetes-ca.pem \

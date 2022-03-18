@@ -14,12 +14,12 @@ ExecStart=/usr/local/bin/etcd \
   --peer-key-file=/etc/etcd/pki/etcd-peer-1-key.pem \
   --peer-client-cert-auth=true \
   --peer-trusted-ca-file=/etc/etcd/pki/etcd-ca.pem \
-  --initial-advertise-peer-urls=https://192.168.114.11:2380 \
-  --listen-peer-urls=https://192.168.114.11:2380 \
-  --listen-client-urls=https://192.168.114.11:2379,https://127.0.0.1:2379 \
-  --advertise-client-urls=https://192.168.114.11:2379 \
+  --initial-advertise-peer-urls=https://192.168.114.1:2380 \
+  --listen-peer-urls=https://192.168.114.1:2380 \
+  --listen-client-urls=https://192.168.114.1:2379,https://127.0.0.1:2379 \
+  --advertise-client-urls=https://192.168.114.1:2379 \
   --initial-cluster-token=etcd \
-  --initial-cluster=etcd-1=https://192.168.114.11:2380,etcd-2=https://192.168.114.12:2380,etcd-3=https://192.168.114.13:2380 \
+  --initial-cluster=etcd-1=https://192.168.114.1:2380,etcd-2=https://192.168.114.2:2380,etcd-3=https://192.168.114.3:2380 \
   --initial-cluster-state=new \
   --data-dir=/var/lib/etcd \
   --log-outputs=/var/log/etcd/etcd.log \

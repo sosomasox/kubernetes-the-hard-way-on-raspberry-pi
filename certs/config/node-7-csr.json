@@ -1,8 +1,8 @@
 {
-  "CN": "system:node:control-plane-3.k8s.home.arpa",
+  "CN": "system:node:node-7.k8s.home.arpa",
   "hosts": [
-    "control-plane-3.k8s.home.arpa",
-    "192.168.114.3"
+    "node-7.k8s.home.arpa",
+    "192.168.114.17"
   ],
   "key": {
     "algo": "rsa",

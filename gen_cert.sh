@@ -132,7 +132,7 @@ cfssl gencert \
     -profile=kubelet \
     ./config/control-plane-${i}-csr.json | cfssljson -bare ./cert/control-plane-${i}
 done
-for i in `seq 1 5`
+for i in `seq 1 8`
 do
 cfssl gencert \
     -ca=./cacert/kubernetes-ca.pem \

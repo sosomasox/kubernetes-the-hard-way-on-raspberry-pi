@@ -2,7 +2,7 @@
   "CN": "system:node:node-3.k8s.home.arpa",
   "hosts": [
     "node-3.k8s.home.arpa",
-    "192.168.114.16"
+    "192.168.114.13"
   ],
   "key": {
     "algo": "rsa",

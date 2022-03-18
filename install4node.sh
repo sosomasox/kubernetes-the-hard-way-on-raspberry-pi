@@ -1,6 +1,6 @@
 #!/bin/bash -x
 
-KUBERNETES_VERSION=v1.23.4
+KUBERNETES_VERSION=v1.23.1
 
 sudo mkdir -p \
     /etc/cni/net.d/ \
