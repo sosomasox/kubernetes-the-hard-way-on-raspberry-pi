@@ -19,6 +19,5 @@ kubectl label node node-4.k8s.home.arpa node-role.kubernetes.io/node=''
 kubectl label node node-5.k8s.home.arpa node-role.kubernetes.io/node=''
 kubectl label node node-6.k8s.home.arpa node-role.kubernetes.io/node=''
 kubectl label node node-7.k8s.home.arpa node-role.kubernetes.io/node=''
-kubectl label node node-8.k8s.home.arpa node-role.kubernetes.io/node=''
 
 exit 0

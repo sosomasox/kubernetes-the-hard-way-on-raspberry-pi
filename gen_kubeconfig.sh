@@ -84,7 +84,7 @@ kubectl config set-context default \
     --kubeconfig=kubeconfig/control-plane-${i}.kubeconfig
 kubectl config use-context default --kubeconfig=kubeconfig/control-plane-${i}.kubeconfig
 done
-for i in `seq 1 8`
+for i in `seq 1 7`
 do
 kubectl config set-cluster kubernetes-the-hard-way \
     --certificate-authority=./certs/cacert/kubernetes-ca.pem \
