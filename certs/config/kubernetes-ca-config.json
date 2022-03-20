@@ -9,7 +9,7 @@
           "server auth", 
           "client auth"
         ],
-        "expiry": "672h"
+        "expiry": "2016h"
       },
       "service-account": {
         "usages": [
@@ -19,7 +19,7 @@
           "server auth",
           "client auth"
         ],
-        "expiry": "672h"
+        "expiry": "2016h"
       },
       "kubelet": {
         "usages": [
@@ -29,7 +29,7 @@
           "server auth", 
           "client auth"
         ],
-        "expiry": "672h"
+        "expiry": "2016h"
       },
       "kube-proxy": {
         "usages": [
@@ -39,7 +39,7 @@
           "server auth",
           "client auth"
         ],
-        "expiry": "672h"
+        "expiry": "2016h"
       }
     }
   }
