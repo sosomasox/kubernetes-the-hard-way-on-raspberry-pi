@@ -1,6 +1,6 @@
 #!/bin/bash -x
 
-ETCD_VERSION=v3.5.1
+ETCD_VERSION=v3.5.4
 GOOGLE_URL=https://storage.googleapis.com/etcd
 GITHUB_URL=https://github.com/etcd-io/etcd/releases/download
 DOWNLOAD_URL=${GITHUB_URL}
