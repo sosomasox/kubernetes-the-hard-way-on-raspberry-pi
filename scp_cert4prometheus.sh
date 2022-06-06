@@ -16,12 +16,15 @@ scp \
   config.home.arpa:/tmp
 
 ssh config.home.arpa \
-    "sudo mv /tmp/prometheus-*.pem \
-             /tmp/kubernetes-ca.pem \
-             /tmp/etcd-ca.pem \
-             /etc/prometheus/pki/"
-ssh config.home.arpa \
-    "sudo chown prometheus:prometheus /etc/prometheus/pki/*"
+  "sudo mkdir -p /etc/prometheus/pki/"
 
+ssh config.home.arpa \
+  "sudo mv /tmp/prometheus-*.pem \
+           /tmp/kubernetes-ca.pem \
+           /tmp/etcd-ca.pem \
+           /etc/prometheus/pki/"
+
+ssh config.home.arpa \
+  "sudo chown prometheus:prometheus /etc/prometheus/pki/*"
 
 exit 0
