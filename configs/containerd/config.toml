@@ -81,7 +81,7 @@ version = 2
         container_annotations = []
         pod_annotations = []
         privileged_without_host_devices = false
-        runtime_engine = "/usr/sbin/runc"
+        runtime_engine = "/usr/local/bin"
         runtime_root = ""
         runtime_type = ""
 

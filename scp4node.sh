@@ -31,12 +31,12 @@ scp \
     certs/cert/node-${i}-key.pem \
     kubeconfig/node-${i}.kubeconfig \
     kubeconfig/kube-proxy.kubeconfig \
-    containerd/config/config.toml \
-    containerd/unitfile/containerd.service \
+    configs/containerd/config.toml \
     configs/kube-proxy/kube-proxy-config.yaml \
     configs/kubelet/node-${i}/kubelet-config.yaml \
     unitfiles/kube-proxy/kube-proxy.service \
     unitfiles/kubelet/node-${i}/kubelet.service \
+    unitfiles/containerd/containerd.service \
     node-${i}.k8s.home.arpa:
 done
 }

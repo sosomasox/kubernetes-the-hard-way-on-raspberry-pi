@@ -37,18 +37,18 @@ sudo update-alternatives --set ip6tables /usr/sbin/ip6tables-legacy
 sudo update-alternatives --set arptables /usr/sbin/arptables-legacy
 sudo update-alternatives --set ebtables /usr/sbin/ebtables-legacy
 
-sudo apt install -y containerd runc
+wget https://github.com/containerd/containerd/releases/download/v1.6.6/containerd-1.6.6-linux-arm64.tar.gz
+sudo tar Cxzvf /usr/local containerd-1.6.6-linux-arm64.tar.gz
 
-#sudo apt install -y make git gcc build-essential pkgconf libtool libsystemd-dev libprotobuf-c-dev libcap-dev libseccomp-dev libyajl-dev go-md2man libtool autoconf python3 automake
-#git clone https://github.com/containers/crun.git
-#cd crun/
-#./autogen.sh 
-#./configure 
-#make
-#sudo make install
-#/usr/local/bin/crun --version
-#cd ../
-#rm -rf crun
+wget https://github.com/opencontainers/runc/releases/download/v1.1.3/runc.arm64
+mv ./runc.arm64 ./runc
+chmod +x ./runc
+sudo mv ./runc /usr/local/bin
+
+wget https://github.com/containers/crun/releases/download/1.4.5/crun-1.4.5-linux-arm64
+mv ./crun-1.4.5-linux-arm64 ./crun
+chmod +x ./crun
+sudo mv ./crun /usr/local/bin
 
 sudo sh -c 'echo "deb http://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable:/cri-o:/1.23:/1.23.0/xUbuntu_20.04/ /" > /etc/apt/sources.list.d/devel:kubic:libcontainers:stable:cri-o:1.23:1.23.0.list'
 sudo sh -c 'echo "deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_20.04/ /" > /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list'
