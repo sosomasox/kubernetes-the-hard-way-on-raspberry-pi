@@ -58,9 +58,9 @@ sudo apt update && sudo apt install -y cri-o cri-o-runc
 sudo rm -f /etc/cni/net.d/*
 
 wget -q --https-only --timestamping \
-  https://github.com/containernetworking/plugins/releases/download/v1.0.1/cni-plugins-linux-arm64-v1.0.1.tgz
-sudo tar -xvf cni-plugins-linux-arm64-v1.0.1.tgz -C /opt/cni/bin/
-rm cni-plugins-linux-arm64-v1.0.1.tgz
+  https://github.com/containernetworking/plugins/releases/download/v1.1.1/cni-plugins-linux-arm64-v1.1.1.tgz
+sudo tar -xvf cni-plugins-linux-arm64-v1.1.1.tgz -C /opt/cni/bin/
+rm cni-plugins-linux-arm64-v1.1.1.tgz
 
 wget -q --https-only --timestamping \
     https://storage.googleapis.com/kubernetes-release/release/${KUBERNETES_VERSION}/bin/linux/arm64/kubelet
